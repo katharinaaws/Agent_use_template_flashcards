@@ -9,9 +9,13 @@ const practiceCardFront = document.getElementById("practice-card-front");
 const practiceCardBack = document.getElementById("practice-card-back");
 const revealButton = document.getElementById("reveal-button");
 const nextButton = document.getElementById("next-button");
+const knewItButton = document.getElementById("knew-it-button");
+const knewItCount = document.getElementById("knew-it-count");
 const storageKey = "vocabFlashcards";
 let currentPracticeIndex = 0;
 let cardIsRevealed = false;
+let sessionKnewItCount = 0;
+let currentCardWasMarked = false;
 
 // Load saved word pairs from localStorage.
 function loadWordPairs() {
@@ -63,6 +67,7 @@ function deleteWordPair(index) {
   saveWordPairs();
   showWordPairs();
   cardIsRevealed = false;
+  currentCardWasMarked = false;
   showPracticeCard();
 }
 
@@ -74,7 +79,9 @@ function showPracticeCard() {
     practiceCardInner.classList.remove("is-revealed");
     revealButton.disabled = true;
     nextButton.disabled = true;
+    knewItButton.disabled = true;
     cardIsRevealed = false;
+    currentCardWasMarked = false;
     return;
   }
 
@@ -84,6 +91,7 @@ function showPracticeCard() {
 
   revealButton.disabled = false;
   nextButton.disabled = false;
+  knewItButton.disabled = currentCardWasMarked;
   practiceCardFront.textContent = wordPairs[currentPracticeIndex].english;
   practiceCardBack.textContent = wordPairs[currentPracticeIndex].german;
 
@@ -100,6 +108,8 @@ function showNextPracticeCard() {
     return;
   }
 
+  currentCardWasMarked = false;
+
   if (wordPairs.length === 1) {
     cardIsRevealed = false;
     showPracticeCard();
@@ -115,6 +125,18 @@ function showNextPracticeCard() {
   currentPracticeIndex = nextIndex;
   cardIsRevealed = false;
   showPracticeCard();
+}
+
+// Count the current card once for this display.
+function markCurrentCardAsKnown() {
+  if (wordPairs.length === 0 || currentCardWasMarked) {
+    return;
+  }
+
+  sessionKnewItCount = sessionKnewItCount + 1;
+  knewItCount.textContent = sessionKnewItCount;
+  currentCardWasMarked = true;
+  knewItButton.disabled = true;
 }
 
 // Reveal the German translation of the current practice card.
@@ -156,4 +178,5 @@ showPracticeCard();
 wordForm.addEventListener("submit", addWordPair);
 revealButton.addEventListener("click", revealPracticeCard);
 nextButton.addEventListener("click", showNextPracticeCard);
+knewItButton.addEventListener("click", markCurrentCardAsKnown);
 practiceCard.addEventListener("click", revealPracticeCard);

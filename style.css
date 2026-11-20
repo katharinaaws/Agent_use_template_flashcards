@@ -97,7 +97,8 @@ li {
   transform: rotateY(180deg);
 }
 
-#reveal-button {
+#reveal-button,
+#knew-it-button {
   width: auto;
 }
 
