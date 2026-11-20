@@ -58,3 +58,56 @@ li {
   padding: 6px 10px;
   font-size: 14px;
 }
+
+#practice-card {
+  height: 120px;
+  margin-bottom: 10px;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+#practice-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+#practice-card-inner.is-revealed {
+  transform: rotateY(180deg);
+}
+
+#practice-card-front,
+#practice-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 2px solid #2563eb;
+  font-size: 24px;
+  text-align: center;
+  backface-visibility: hidden;
+}
+
+#practice-card-back {
+  transform: rotateY(180deg);
+}
+
+#reveal-button {
+  width: auto;
+}
+
+.next-button {
+  width: auto;
+  background: #4ade80;
+  color: #052e16;
+}
+
+button:disabled {
+  background: #94a3b8;
+  cursor: default;
+}

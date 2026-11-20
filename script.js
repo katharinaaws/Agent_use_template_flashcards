@@ -3,7 +3,15 @@ const wordForm = document.getElementById("word-form");
 const englishWord = document.getElementById("english-word");
 const germanWord = document.getElementById("german-word");
 const wordList = document.getElementById("word-list");
+const practiceCard = document.getElementById("practice-card");
+const practiceCardInner = document.getElementById("practice-card-inner");
+const practiceCardFront = document.getElementById("practice-card-front");
+const practiceCardBack = document.getElementById("practice-card-back");
+const revealButton = document.getElementById("reveal-button");
+const nextButton = document.getElementById("next-button");
 const storageKey = "vocabFlashcards";
+let currentPracticeIndex = 0;
+let cardIsRevealed = false;
 
 // Load saved word pairs from localStorage.
 function loadWordPairs() {
@@ -54,6 +62,69 @@ function deleteWordPair(index) {
   wordPairs.splice(index, 1);
   saveWordPairs();
   showWordPairs();
+  cardIsRevealed = false;
+  showPracticeCard();
+}
+
+// Show the English word or the German answer on the practice card.
+function showPracticeCard() {
+  if (wordPairs.length === 0) {
+    practiceCardFront.textContent = "Noch keine Wörter vorhanden.";
+    practiceCardBack.textContent = "";
+    practiceCardInner.classList.remove("is-revealed");
+    revealButton.disabled = true;
+    nextButton.disabled = true;
+    cardIsRevealed = false;
+    return;
+  }
+
+  if (currentPracticeIndex >= wordPairs.length) {
+    currentPracticeIndex = 0;
+  }
+
+  revealButton.disabled = false;
+  nextButton.disabled = false;
+  practiceCardFront.textContent = wordPairs[currentPracticeIndex].english;
+  practiceCardBack.textContent = wordPairs[currentPracticeIndex].german;
+
+  if (cardIsRevealed) {
+    practiceCardInner.classList.add("is-revealed");
+  } else {
+    practiceCardInner.classList.remove("is-revealed");
+  }
+}
+
+// Show a random card that is different from the current card.
+function showNextPracticeCard() {
+  if (wordPairs.length === 0) {
+    return;
+  }
+
+  if (wordPairs.length === 1) {
+    cardIsRevealed = false;
+    showPracticeCard();
+    return;
+  }
+
+  let nextIndex = currentPracticeIndex;
+
+  while (nextIndex === currentPracticeIndex) {
+    nextIndex = Math.floor(Math.random() * wordPairs.length);
+  }
+
+  currentPracticeIndex = nextIndex;
+  cardIsRevealed = false;
+  showPracticeCard();
+}
+
+// Reveal the German translation of the current practice card.
+function revealPracticeCard() {
+  if (wordPairs.length === 0) {
+    return;
+  }
+
+  cardIsRevealed = true;
+  showPracticeCard();
 }
 
 // Add a submitted word pair to the list and clear the form.
@@ -74,10 +145,15 @@ function addWordPair(event) {
 
   saveWordPairs();
   showWordPairs();
+  showPracticeCard();
   wordForm.reset();
   englishWord.focus();
 }
 
 loadWordPairs();
 showWordPairs();
+showPracticeCard();
 wordForm.addEventListener("submit", addWordPair);
+revealButton.addEventListener("click", revealPracticeCard);
+nextButton.addEventListener("click", showNextPracticeCard);
+practiceCard.addEventListener("click", revealPracticeCard);
