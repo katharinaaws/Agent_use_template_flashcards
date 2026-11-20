@@ -3,6 +3,27 @@ const wordForm = document.getElementById("word-form");
 const englishWord = document.getElementById("english-word");
 const germanWord = document.getElementById("german-word");
 const wordList = document.getElementById("word-list");
+const storageKey = "vocabFlashcards";
+
+// Load saved word pairs from localStorage.
+function loadWordPairs() {
+  const savedPairs = localStorage.getItem(storageKey);
+
+  if (savedPairs === null) {
+    return;
+  }
+
+  const parsedPairs = JSON.parse(savedPairs);
+
+  for (let index = 0; index < parsedPairs.length; index = index + 1) {
+    wordPairs.push(parsedPairs[index]);
+  }
+}
+
+// Save all word pairs to localStorage.
+function saveWordPairs() {
+  localStorage.setItem(storageKey, JSON.stringify(wordPairs));
+}
 
 // Show every saved word pair in the list.
 function showWordPairs() {
@@ -15,7 +36,7 @@ function showWordPairs() {
 
     wordText.textContent =
       wordPairs[index].english + " – " + wordPairs[index].german;
-    deleteButton.textContent = "Loeschen";
+    deleteButton.textContent = "Löschen";
     deleteButton.className = "delete-button";
     deleteButton.type = "button";
     deleteButton.addEventListener("click", function () {
@@ -31,6 +52,7 @@ function showWordPairs() {
 // Remove a word pair and show the updated list.
 function deleteWordPair(index) {
   wordPairs.splice(index, 1);
+  saveWordPairs();
   showWordPairs();
 }
 
@@ -50,9 +72,12 @@ function addWordPair(event) {
     german: german
   });
 
+  saveWordPairs();
   showWordPairs();
   wordForm.reset();
   englishWord.focus();
 }
 
+loadWordPairs();
+showWordPairs();
 wordForm.addEventListener("submit", addWordPair);
