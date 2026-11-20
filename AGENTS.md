@@ -4,7 +4,7 @@
 Beginner project. Read SPEC.md for what to build. Never edit SPEC.md.
 
 ## Technology
-- Plain HTML, CSS and JavaScript only. No frameworks, libraries, npm,
+- Plain HTML, CSS and JavaScript only. No frameworks except for CDN, libraries, npm,
   or build tools.
 - Files: index.html, style.css, script.js. Ask before creating new files.
 
@@ -24,3 +24,4 @@ Beginner project. Read SPEC.md for what to build. Never edit SPEC.md.
 - After making changes, explain briefly what you changed and why,
   and tell me how to test it in the browser.
 - At the end of each step, propose an update to PROGRESS.md.
+-Do not test with node, it is not installed 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Vocab Flashcards</h1>
+
+    <form id="word-form">
+      <label for="english-word">Englisch</label>
+      <input id="english-word" type="text" required>
+
+      <label for="german-word">Deutsch</label>
+      <input id="german-word" type="text" required>
+
+      <button type="submit">OK</button>
+    </form>
+
+    <section>
+      <h2>Gespeicherte Wortpaare</h2>
+      <ul id="word-list"></ul>
+    </section>
+
+    <section>
+      <h2>Übung</h2>
+      <div id="practice-card">
+        <div id="practice-card-inner">
+          <div id="practice-card-front">Noch keine Wörter vorhanden.</div>
+          <div id="practice-card-back"></div>
+        </div>
+      </div>
+      <button id="reveal-button" type="button">Auflösung zeigen</button>
+      <button id="next-button" type="button" class="next-button">Weiter</button>
+      <button id="knew-it-button" type="button">Ich wusste es</button>
+      <p>In dieser Session gewusst: <span id="knew-it-count" aria-live="polite">0</span></p>
+    </section>
+  </main>
+</body>
+</html>
