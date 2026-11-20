@@ -7,7 +7,7 @@
 - F4 – Wortpaare über localStorage dauerhaft speichern“.
 -  F5 – Übungsmodus mit aufklappbarer deutscher Übersetzung implementiert.
 - F6 – Next-Button zeigt zufällig eine andere Karte und ist hell grün.
-
+- F7 – Session-Zähler für als gewusst markierte Karten ergänzt.
 ## Next
 
 ## Decisions & notes
