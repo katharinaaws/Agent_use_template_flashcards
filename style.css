@@ -39,3 +39,22 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
+section {
+  margin-top: 32px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  padding: 6px 0;
+}
+
+.delete-button {
+  width: auto;
+  margin: 0 0 0 10px;
+  padding: 6px 10px;
+  font-size: 14px;
+}
