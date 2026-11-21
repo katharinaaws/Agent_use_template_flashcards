@@ -8,7 +8,8 @@
 - Feature 5 – Vokabelanzahl-Eingabe erledigt.
 - Feature 6 – Speicher-Button erledigt.
 - Feature 7 – Session-Speicherung im JavaScript-Array erledigt.
-
+- Feature 8 – localStorage-Speicherung erledigt
+- Feature 9 – Tabelle „Lernprotokoll“ mit den Spalten Datum, Dauer, Fokus, Vokabeln und Kommentar erledigt.
 ## Next
 
 ## Decisions & notes
