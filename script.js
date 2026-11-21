@@ -55,6 +55,17 @@ function renderTotalLearningTime() {
     document.querySelector("#total-learning-time").textContent = roundedHours + " h";
 }
 
+// Addiert alle gespeicherten Vokabeln und zeigt die Gesamtzahl an.
+function renderTotalVocabulary() {
+    let totalVocabulary = 0;
+
+    for (let i = 0; i < learningSessions.length; i++) {
+        totalVocabulary = totalVocabulary + Number(learningSessions[i].vocabulary);
+    }
+
+    document.querySelector("#total-vocabulary").textContent = String(totalVocabulary);
+}
+
 // Erstellt eine Tabellenzelle mit dem angegebenen Text.
 function createTableCell(text) {
     const tableCell = document.createElement("td");
@@ -120,11 +131,13 @@ function saveSession(event) {
     document.querySelector("#learning-form").reset();
     renderSessions();
     renderTotalLearningTime();
+    renderTotalVocabulary();
 }
 
 loadSessions();
 renderSessions();
 renderTotalLearningTime();
+renderTotalVocabulary();
 
 // Verknüpft das Formular mit der Speicherfunktion.
 const learningForm = document.querySelector("#learning-form");

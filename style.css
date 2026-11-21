@@ -67,6 +67,44 @@ body {
     font-weight: 700;
 }
 
+.vocabulary-card {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    height: 78px;
+    margin-left: 18px;
+    padding: 16px 20px;
+    border: 1px solid #dedede;
+    border-radius: 11px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(40, 40, 70, 0.08);
+}
+
+.vocabulary-card .book-icon {
+    margin-right: 12px;
+    color: #7c83ff;
+    font-size: 30px;
+}
+
+.vocabulary-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.vocabulary-title {
+    margin: 0 0 4px;
+    color: #20283a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.vocabulary-value {
+    margin: 0;
+    color: #20283a;
+    font-size: 26px;
+    font-weight: 700;
+}
+
 .learning-form {
     width: 405px;
     padding: 28px 28px 24px;
