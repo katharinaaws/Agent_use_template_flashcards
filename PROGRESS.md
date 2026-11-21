@@ -16,7 +16,9 @@
 - Feature 13 - 
 - Feature 14 – Balkendiagramm „Lernzeit pro Woche (h) erledigt
 - Feature 15 – Überschrift, Untertitel und Preply-Header erledigt.
-- Feature 16 – Französische Flagge und Preply-Logo erledigt.”
+- Feature 16 – Französische Flagge und Preply-Logo erledigt.
+- Feature 17- Abstände und Höhe wurden an die Vorlage 
+
 ## Next
 
 ## Decisions & notes
