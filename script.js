@@ -71,6 +71,110 @@ function renderTotalSessions() {
     document.querySelector("#total-sessions").textContent = String(learningSessions.length);
 }
 
+// Berechnet die Kalenderwoche eines Datums.
+function getCalendarWeek(date) {
+    const dateParts = date.split("-");
+    const year = Number(dateParts[0]);
+    const month = Number(dateParts[1]) - 1;
+    const day = Number(dateParts[2]);
+    const currentDate = new Date(Date.UTC(year, month, day));
+    const dayNumber = (currentDate.getUTCDay() + 6) % 7;
+
+    currentDate.setUTCDate(currentDate.getUTCDate() - dayNumber + 3);
+    const firstThursday = new Date(Date.UTC(currentDate.getUTCFullYear(), 0, 4));
+    const firstDayNumber = (firstThursday.getUTCDay() + 6) % 7;
+    firstThursday.setUTCDate(firstThursday.getUTCDate() - firstDayNumber + 3);
+
+    const difference = currentDate - firstThursday;
+    const weekNumber = 1 + Math.round(difference / (7 * 24 * 60 * 60 * 1000));
+    return {
+        key: currentDate.getUTCFullYear() + "-" + String(weekNumber).padStart(2, "0"),
+        label: "KW " + weekNumber
+    };
+}
+
+// Gruppiert die Lernzeit nach Kalenderwoche.
+function getWeeklyLearningTime() {
+    const weeklyMinutes = {};
+
+    for (let i = 0; i < learningSessions.length; i++) {
+        const session = learningSessions[i];
+        const calendarWeek = getCalendarWeek(session.date);
+
+        if (weeklyMinutes[calendarWeek.key] === undefined) {
+            weeklyMinutes[calendarWeek.key] = {
+                minutes: 0,
+                label: calendarWeek.label
+            };
+        }
+
+        weeklyMinutes[calendarWeek.key].minutes =
+            weeklyMinutes[calendarWeek.key].minutes + Number(session.duration);
+    }
+
+    return weeklyMinutes;
+}
+
+// Erstellt die Stundenbeschriftung für die senkrechte Achse.
+function renderChartScale(maximumHours) {
+    const chartScale = document.querySelector("#chart-scale");
+    chartScale.textContent = "";
+
+    for (let i = 6; i >= 0; i--) {
+        const scaleValue = document.createElement("span");
+        const hours = (maximumHours / 6) * i;
+        scaleValue.textContent = hours.toFixed(1);
+        chartScale.appendChild(scaleValue);
+    }
+}
+
+// Zeigt die Lernzeit als lila Balken pro Kalenderwoche.
+function renderWeeklyChart() {
+    const weeklyMinutes = getWeeklyLearningTime();
+    const weekKeys = Object.keys(weeklyMinutes).sort();
+    const chartBars = document.querySelector("#chart-bars");
+    chartBars.textContent = "";
+
+    let maximumHours = 0;
+    for (let i = 0; i < weekKeys.length; i++) {
+        const hours = weeklyMinutes[weekKeys[i]].minutes / 60;
+        if (hours > maximumHours) {
+            maximumHours = hours;
+        }
+    }
+
+    if (maximumHours < 1) {
+        maximumHours = 1;
+    } else {
+        maximumHours = Math.ceil(maximumHours);
+    }
+
+    renderChartScale(maximumHours);
+
+    for (let i = 0; i < weekKeys.length; i++) {
+        const week = weeklyMinutes[weekKeys[i]];
+        const hours = week.minutes / 60;
+        const roundedHours = Math.round(hours * 10) / 10;
+        const barColumn = document.createElement("div");
+        const barValue = document.createElement("span");
+        const bar = document.createElement("div");
+        const barLabel = document.createElement("span");
+
+        barColumn.className = "bar-column";
+        barValue.className = "bar-value";
+        barValue.textContent = roundedHours.toFixed(1) + " h";
+        bar.className = "bar";
+        bar.style.height = (hours / maximumHours * 100) + "%";
+        barLabel.className = "bar-label";
+        barLabel.textContent = week.label;
+
+        barColumn.appendChild(barValue);
+        barColumn.appendChild(bar);
+        barColumn.appendChild(barLabel);
+        chartBars.appendChild(barColumn);
+    }
+}
+
 // Erstellt eine Tabellenzelle mit dem angegebenen Text.
 function createTableCell(text) {
     const tableCell = document.createElement("td");
@@ -138,6 +242,7 @@ function saveSession(event) {
     renderTotalLearningTime();
     renderTotalVocabulary();
     renderTotalSessions();
+    renderWeeklyChart();
 }
 
 loadSessions();
@@ -145,6 +250,7 @@ renderSessions();
 renderTotalLearningTime();
 renderTotalVocabulary();
 renderTotalSessions();
+renderWeeklyChart();
 
 // Verknüpft das Formular mit der Speicherfunktion.
 const learningForm = document.querySelector("#learning-form");

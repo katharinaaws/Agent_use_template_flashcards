@@ -14,21 +14,97 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 100px 32px;
+    padding: 18px 32px 32px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 86px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+}
+
+.french-flag {
+    display: block;
+    width: 55px;
+    height: 65px;
+    border-radius: 7px;
+    background: linear-gradient(
+        to right,
+        #1d4ed8 0,
+        #1d4ed8 33.33%,
+        #ffffff 33.33%,
+        #ffffff 66.66%,
+        #ef4444 66.66%,
+        #ef4444 100%
+    );
+    box-shadow: 0 2px 5px rgba(40, 40, 70, 0.12);
+}
+
+.header-text {
+    margin-left: 22px;
+}
+
+.header-text h1 {
+    margin: 0 0 4px;
+    color: #20283a;
+    font-size: 34px;
+    line-height: 1.05;
+    font-weight: 800;
+}
+
+.header-text p {
+    margin: 0;
+    color: #20283a;
+    font-size: 17px;
+}
+
+.preply-logo {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    color: #20283a;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.preply-play {
+    margin-right: 8px;
+    color: #ef4c86;
+    font-size: 38px;
+    line-height: 1;
 }
 
 .top-layout {
     display: flex;
     align-items: flex-start;
     width: 100%;
+    gap: 18px;
+}
+
+.dashboard {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.stat-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
 }
 
 .total-learning-card {
     display: flex;
     align-items: center;
-    width: 250px;
     height: 78px;
-    margin-left: 18px;
     padding: 16px 20px;
     border: 1px solid #dedede;
     border-radius: 11px;
@@ -70,9 +146,7 @@ body {
 .vocabulary-card {
     display: flex;
     align-items: center;
-    width: 250px;
     height: 78px;
-    margin-left: 18px;
     padding: 16px 20px;
     border: 1px solid #dedede;
     border-radius: 11px;
@@ -108,9 +182,7 @@ body {
 .session-card {
     display: flex;
     align-items: center;
-    width: 250px;
     height: 78px;
-    margin-left: 18px;
     padding: 16px 20px;
     border: 1px solid #dedede;
     border-radius: 11px;
@@ -152,7 +224,7 @@ body {
     box-shadow: 0 2px 5px rgba(40, 40, 70, 0.08);
 }
 
-h1 {
+.learning-form h2 {
     display: flex;
     align-items: center;
     margin: 0 0 24px;
@@ -245,6 +317,101 @@ textarea {
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+}
+
+.learning-chart {
+    height: 268px;
+    margin-top: 18px;
+    padding: 16px 24px 14px;
+    border: 1px solid #dedede;
+    border-radius: 11px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(40, 40, 70, 0.08);
+}
+
+.learning-chart h2 {
+    display: flex;
+    align-items: center;
+    margin: 0 0 8px;
+    color: #20283a;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.learning-chart h2 .clock-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    font-size: 24px;
+}
+
+.chart-area {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    height: 180px;
+}
+
+.chart-scale {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    padding-top: 12px;
+    color: #20283a;
+    font-size: 13px;
+    text-align: right;
+}
+
+.chart-scale span {
+    display: block;
+    height: 18px;
+    line-height: 18px;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 180px;
+    border-bottom: 1px solid #aeb3c1;
+    background: repeating-linear-gradient(
+        to bottom,
+        #eeeeF3 0,
+        #eeeeF3 1px,
+        transparent 1px,
+        transparent 25px
+    );
+}
+
+.bar-column {
+    display: grid;
+    grid-template-rows: 24px 126px 24px;
+    align-items: end;
+    width: 22%;
+    height: 174px;
+    text-align: center;
+}
+
+.bar-value {
+    align-self: end;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.bar {
+    width: 80%;
+    max-width: 100px;
+    justify-self: center;
+    align-self: end;
+    min-height: 2px;
+    border-radius: 4px 4px 0 0;
+    background: #aeb0ff;
+}
+
+.bar-label {
+    align-self: end;
+    padding-top: 8px;
+    font-size: 13px;
 }
 
 .learning-log {

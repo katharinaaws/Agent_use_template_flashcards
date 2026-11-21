@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lernprotokoll hinzufügen</title>
+    <title>Französisch lernen mit Preply</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="page">
+        <header class="page-header">
+            <div class="header-brand">
+                <span class="french-flag" aria-label="Französische Flagge"></span>
+                <div class="header-text">
+                    <h1>Französisch lernen mit Preply</h1>
+                    <p>Lernfortschritt, Stunden &amp; Vokabeln im Überblick</p>
+                </div>
+            </div>
+            <div class="preply-logo" aria-label="Preply">
+                <span class="preply-play" aria-hidden="true">▶</span>
+                <span>Preply</span>
+            </div>
+        </header>
+
         <div class="top-layout">
             <form class="learning-form" id="learning-form">
-                <h1><span class="plus-icon">+</span> Lernprotokoll hinzufügen</h1>
+                <h2><span class="plus-icon">+</span> Lernprotokoll hinzufügen</h2>
 
                 <label class="date-label" for="date">Datum</label>
                 <input type="date" id="date" name="date" value="2026-11-19" required>
@@ -35,29 +49,41 @@
                 <button class="save-session-button" type="submit">+ Session speichern</button>
             </form>
 
-            <section class="total-learning-card">
-                <span class="clock-icon" aria-hidden="true">◷</span>
-                <div class="total-learning-content">
-                    <p class="total-learning-title">Gesamt Lernzeit</p>
-                    <p class="total-learning-value" id="total-learning-time">0 h</p>
-                </div>
-            </section>
+            <div class="dashboard">
+                <div class="stat-cards">
+                    <section class="total-learning-card">
+                        <span class="clock-icon" aria-hidden="true">◷</span>
+                        <div class="total-learning-content">
+                            <p class="total-learning-title">Gesamt Lernzeit</p>
+                            <p class="total-learning-value" id="total-learning-time">0 h</p>
+                        </div>
+                    </section>
 
-            <section class="vocabulary-card">
-                <span class="book-icon" aria-hidden="true">▣</span>
-                <div class="vocabulary-content">
-                    <p class="vocabulary-title">Gelernte Vokabeln</p>
-                    <p class="vocabulary-value" id="total-vocabulary">0</p>
-                </div>
-            </section>
+                    <section class="vocabulary-card">
+                        <span class="book-icon" aria-hidden="true">▣</span>
+                        <div class="vocabulary-content">
+                            <p class="vocabulary-title">Gelernte Vokabeln</p>
+                            <p class="vocabulary-value" id="total-vocabulary">0</p>
+                        </div>
+                    </section>
 
-            <section class="session-card">
-                <span class="calendar-icon" aria-hidden="true">▣</span>
-                <div class="session-content">
-                    <p class="session-title">Lernsessions</p>
-                    <p class="session-value" id="total-sessions">0</p>
+                    <section class="session-card">
+                        <span class="calendar-icon" aria-hidden="true">▣</span>
+                        <div class="session-content">
+                            <p class="session-title">Lernsessions</p>
+                            <p class="session-value" id="total-sessions">0</p>
+                        </div>
+                    </section>
                 </div>
-            </section>
+
+                <section class="learning-chart">
+                    <h2><span class="clock-icon" aria-hidden="true">◷</span> Lernzeit pro Woche (h)</h2>
+                    <div class="chart-area">
+                        <div class="chart-scale" id="chart-scale"></div>
+                        <div class="chart-bars" id="chart-bars"></div>
+                    </div>
+                </section>
+            </div>
         </div>
 
         <section class="learning-log">

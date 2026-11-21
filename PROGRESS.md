@@ -12,7 +12,9 @@
 - Feature 9 – Tabelle „Lernprotokoll“ mit den Spalten Datum, Dauer, Fokus, Vokabeln und Kommentar erledigt.
 - Feature 10 – Gespeicherte Lernsessions werden beim Laden und nach dem Speichern in der Tabelle angezeigt.
 - Feature 11 – Gesamte Lernzeit als Stundenkarte erledigt.
-- Feature 12 – Karte „Gelernte Vokabeln“ mit automatischer Summierung erledigt.“
+- Feature 12 – Karte „Gelernte Vokabeln“ mit automatischer Summierung erledigt.
+- Feature 13 - 
+- Feature 14 – Balkendiagramm „Lernzeit pro Woche (h) erledigt
 ## Next
 
 ## Decisions & notes
