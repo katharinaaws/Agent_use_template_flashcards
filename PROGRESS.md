@@ -15,6 +15,7 @@
 - Feature 12 – Karte „Gelernte Vokabeln“ mit automatischer Summierung erledigt.
 - Feature 13 - 
 - Feature 14 – Balkendiagramm „Lernzeit pro Woche (h) erledigt
+- Feature 15 – Überschrift, Untertitel und Preply-Header erledigt.
 ## Next
 
 ## Decisions & notes
