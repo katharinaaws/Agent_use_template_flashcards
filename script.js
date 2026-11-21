@@ -66,6 +66,11 @@ function renderTotalVocabulary() {
     document.querySelector("#total-vocabulary").textContent = String(totalVocabulary);
 }
 
+// Zeigt die Gesamtzahl der gespeicherten Lernsessions an.
+function renderTotalSessions() {
+    document.querySelector("#total-sessions").textContent = String(learningSessions.length);
+}
+
 // Erstellt eine Tabellenzelle mit dem angegebenen Text.
 function createTableCell(text) {
     const tableCell = document.createElement("td");
@@ -132,12 +137,14 @@ function saveSession(event) {
     renderSessions();
     renderTotalLearningTime();
     renderTotalVocabulary();
+    renderTotalSessions();
 }
 
 loadSessions();
 renderSessions();
 renderTotalLearningTime();
 renderTotalVocabulary();
+renderTotalSessions();
 
 // Verknüpft das Formular mit der Speicherfunktion.
 const learningForm = document.querySelector("#learning-form");
