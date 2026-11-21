@@ -6,6 +6,8 @@
 - Feature 3 – Dauer-Eingabe erledigt.
 - Feature 4 – Thema-Eingabe erledigt.
 - Feature 5 – Vokabelanzahl-Eingabe erledigt.
+- Feature 6 – Speicher-Button erledigt.
+- Feature 7 – Session-Speicherung im JavaScript-Array erledigt.
 
 ## Next
 

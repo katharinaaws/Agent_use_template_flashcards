@@ -1,5 +1,29 @@
 const learningSessions = [];
 
+// Lädt gespeicherte Lernsessions aus dem Browser.
+function loadSessions() {
+    const savedSessions = localStorage.getItem("learningSessions");
+
+    if (savedSessions !== null) {
+        try {
+            const parsedSessions = JSON.parse(savedSessions);
+
+            if (Array.isArray(parsedSessions)) {
+                for (let i = 0; i < parsedSessions.length; i++) {
+                    learningSessions.push(parsedSessions[i]);
+                }
+            }
+        } catch (error) {
+            localStorage.removeItem("learningSessions");
+        }
+    }
+}
+
+// Speichert alle Lernsessions im Browser.
+function saveSessions() {
+    localStorage.setItem("learningSessions", JSON.stringify(learningSessions));
+}
+
 // Speichert eine gültige Lernsession aus dem Formular.
 function saveSession(event) {
     event.preventDefault();
@@ -29,8 +53,11 @@ function saveSession(event) {
     };
 
     learningSessions.push(session);
+    saveSessions();
     document.querySelector("#learning-form").reset();
 }
+
+loadSessions();
 
 // Verknüpft das Formular mit der Speicherfunktion.
 const learningForm = document.querySelector("#learning-form");
