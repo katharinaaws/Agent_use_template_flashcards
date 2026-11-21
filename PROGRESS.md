@@ -1,5 +1,5 @@
 # Progress
-
+mit Sophie Ty & Mia Trupina 
 ## Done
 - Feature 1 – Lernprotokoll-Form mit Fokusauswahl.
 - Feature 2 - Datumauswahl erledigt
@@ -13,7 +13,7 @@
 - Feature 10 – Gespeicherte Lernsessions werden beim Laden und nach dem Speichern in der Tabelle angezeigt.
 - Feature 11 – Gesamte Lernzeit als Stundenkarte erledigt.
 - Feature 12 – Karte „Gelernte Vokabeln“ mit automatischer Summierung erledigt.
-- Feature 13 - 
+- Feature 13 - eine dritte Learnsession finzufügen 
 - Feature 14 – Balkendiagramm „Lernzeit pro Woche (h) erledigt
 - Feature 15 – Überschrift, Untertitel und Preply-Header erledigt.
 - Feature 16 – Französische Flagge und Preply-Logo erledigt.
@@ -23,5 +23,5 @@
 ## Next
 
 ## Decisions & notes
-kein Python zugriff erlaubt,  öffnen im Browser nicht erlaubt. 
+kein Python zugriff erlaubt,  öffnen im Browser nicht erlaubt. kein node zugriff erlauben 
 ## Known problems
