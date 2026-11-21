@@ -8,5 +8,5 @@
 ## Next
 
 ## Decisions & notes
-
+kein Python zugriff erlaubt,  öffnen im Browser nicht erlaubt. 
 ## Known problems

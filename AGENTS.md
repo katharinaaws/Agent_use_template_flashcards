@@ -3,6 +3,16 @@
 ## Project
 Beginner project. Read SPEC.md for what to build. Never edit SPEC.md.
 
+## Design rules
+- Always use "French website_Idea.png" as the visual reference.
+- Every feature must match the reference image as closely as possible.
+- Keep the same colors, spacing, fonts, layout and styling.
+- Do not redesign existing elements when implementing new features.
+- Before implementing a feature, check the reference image.
+- Only implement the requested feature.
+- If the image is not accessible, ask me to provide it.
+
+
 ## Technology
 - Plain HTML, CSS and JavaScript only. No frameworks, libraries, npm,
   or build tools.
