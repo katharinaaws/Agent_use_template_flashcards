@@ -8,14 +8,14 @@
 </head>
 <body>
     <main class="page">
-        <form class="learning-form">
+        <form class="learning-form" id="learning-form">
             <h1><span class="plus-icon">+</span> Lernprotokoll hinzufügen</h1>
 
             <label class="date-label" for="date">Datum</label>
-            <input type="date" id="date" name="date" value="2026-11-19">
+            <input type="date" id="date" name="date" value="2026-11-19" required>
 
             <label class="focus-label" for="focus">Fokus</label>
-            <select id="focus" name="focus">
+            <select id="focus" name="focus" required>
                 <option value="grammatik">Grammatik</option>
                 <option value="konversation" selected>Konversation</option>
                 <option value="hoeren-verstehen">Hören &amp; Verstehen</option>
@@ -23,7 +23,7 @@
             </select>
 
             <label class="duration-label" for="duration">Dauer (min)</label>
-            <input type="number" id="duration" name="duration" value="60" min="1">
+            <input type="number" id="duration" name="duration" value="60" min="1" step="1" required>
 
             <label class="vocabulary-label" for="vocabulary">Vokabeln (Anzahl)</label>
             <input type="number" id="vocabulary" name="vocabulary" value="0" min="0" step="1">
@@ -31,8 +31,9 @@
             <label class="topic-label" for="topic">Thema (optional)</label>
             <textarea id="topic" name="topic" placeholder="Thema: Reise &amp; Urlaub"></textarea>
 
-            <button class="save-session-button" type="button">+ Session speichern</button>
+            <button class="save-session-button" type="submit">+ Session speichern</button>
         </form>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
