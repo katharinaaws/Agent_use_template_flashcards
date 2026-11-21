@@ -17,6 +17,56 @@ body {
     padding: 100px 32px;
 }
 
+.top-layout {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.total-learning-card {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    height: 78px;
+    margin-left: 18px;
+    padding: 16px 20px;
+    border: 1px solid #dedede;
+    border-radius: 11px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(40, 40, 70, 0.08);
+}
+
+.clock-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    color: #7c83ff;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.total-learning-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.total-learning-title {
+    margin: 0 0 4px;
+    color: #20283a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.total-learning-value {
+    margin: 0;
+    color: #20283a;
+    font-size: 26px;
+    font-weight: 700;
+}
+
 .learning-form {
     width: 405px;
     padding: 28px 28px 24px;

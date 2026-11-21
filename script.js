@@ -42,6 +42,19 @@ function renderSessions() {
     }
 }
 
+// Berechnet die gesamte Lernzeit und zeigt sie in Stunden an.
+function renderTotalLearningTime() {
+    let totalMinutes = 0;
+
+    for (let i = 0; i < learningSessions.length; i++) {
+        totalMinutes = totalMinutes + Number(learningSessions[i].duration);
+    }
+
+    const totalHours = totalMinutes / 60;
+    const roundedHours = Math.round(totalHours * 10) / 10;
+    document.querySelector("#total-learning-time").textContent = roundedHours + " h";
+}
+
 // Erstellt eine Tabellenzelle mit dem angegebenen Text.
 function createTableCell(text) {
     const tableCell = document.createElement("td");
@@ -106,10 +119,12 @@ function saveSession(event) {
     saveSessions();
     document.querySelector("#learning-form").reset();
     renderSessions();
+    renderTotalLearningTime();
 }
 
 loadSessions();
 renderSessions();
+renderTotalLearningTime();
 
 // Verknüpft das Formular mit der Speicherfunktion.
 const learningForm = document.querySelector("#learning-form");
