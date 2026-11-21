@@ -18,6 +18,7 @@
 - Feature 15 – Überschrift, Untertitel und Preply-Header erledigt.
 - Feature 16 – Französische Flagge und Preply-Logo erledigt.
 - Feature 17- Abstände und Höhe wurden an die Vorlage 
+- Feature 18-  Layout angepasst und Beschriftung „Kommentar (optional)“ ergänzt.
 
 ## Next
 

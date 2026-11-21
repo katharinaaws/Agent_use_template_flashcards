@@ -24,6 +24,7 @@ nur ich, auf einem laptop browser
 - F16: Füge links neben der Überschrift eine französische Flagge und rechts oben den Schriftzug „Preply“ hinzu. Orientiere dich dabei am Vorlagenbild.
 - F17: Gestalte die Webseite mit CSS wie im Vorlagenbild. Verwende einen hellen Hintergrund, weiße beziehungsweise helllila Karten, abgerundete Ecken, dünne lila Rahmen und lila Buttons. Passe auch die Schriftgrößen und Abstände an.
 - F18: Ordne die Webseite wie im Vorlagenbild an. Links soll das Formular „Neue Lernsession eintragen“ stehen. Rechts sollen oben die drei Statistik-Karten und darunter das Balkendiagramm angezeigt werden. Unter diesen beiden Bereichen soll die Tabelle „Lernprotokoll“ über die gesamte Breite stehen. Ändere die Beschriftung „Thema“ im Formular zu „Kommentar (optional)“.
+- F19: Füge in der Tabelle „Lernprotokoll“ für jede gespeicherte Lernsession einen roten Button „Löschen“ hinzu. Wenn ich auf den Button klicke, soll nur die jeweilige Lernsession aus der Tabelle gelöscht werden. Der Eintrag soll auch aus dem `localStorage` entfernt werden, damit er nach dem Neuladen der Webseite nicht wieder erscheint. Nach dem Löschen sollen sich das Balkendiagramm „Lernzeit pro Woche“ und die drei Statistik-Karten („Gesamt Lernzeit“, „Gelernte Vokabeln“ und „Lernsessions“) automatisch aktualisieren. Die gelöschte Session darf bei den Berechnungen nicht mehr berücksichtigt werden. Das Design des Buttons soll zum Referenzbild passen.
   
 
 ## Acceptance criteria (how I know a feature works)

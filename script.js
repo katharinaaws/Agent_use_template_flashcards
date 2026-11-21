@@ -38,8 +38,35 @@ function renderSessions() {
         tableRow.appendChild(createTableCell(formatFocus(session.focus)));
         tableRow.appendChild(createTableCell(String(session.vocabulary)));
         tableRow.appendChild(createTableCell(session.topic));
+        tableRow.appendChild(createDeleteButton(i));
         tableBody.appendChild(tableRow);
     }
+}
+
+// Erstellt einen roten Löschen-Button für eine Lernsession.
+function createDeleteButton(sessionIndex) {
+    const tableCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+
+    deleteButton.className = "delete-session-button";
+    deleteButton.type = "button";
+    deleteButton.textContent = "Löschen";
+    deleteButton.addEventListener("click", function () {
+        deleteSession(sessionIndex);
+    });
+    tableCell.appendChild(deleteButton);
+    return tableCell;
+}
+
+// Löscht eine Lernsession und aktualisiert alle gespeicherten Anzeigen.
+function deleteSession(sessionIndex) {
+    learningSessions.splice(sessionIndex, 1);
+    saveSessions();
+    renderSessions();
+    renderTotalLearningTime();
+    renderTotalVocabulary();
+    renderTotalSessions();
+    renderWeeklyChart();
 }
 
 // Berechnet die gesamte Lernzeit und zeigt sie in Stunden an.
