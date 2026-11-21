@@ -24,6 +24,56 @@ function saveSessions() {
     localStorage.setItem("learningSessions", JSON.stringify(learningSessions));
 }
 
+// Zeigt alle gespeicherten Lernsessions in der Tabelle an.
+function renderSessions() {
+    const tableBody = document.querySelector("#learning-log-body");
+    tableBody.textContent = "";
+
+    for (let i = 0; i < learningSessions.length; i++) {
+        const session = learningSessions[i];
+        const tableRow = document.createElement("tr");
+
+        tableRow.appendChild(createTableCell(formatDate(session.date)));
+        tableRow.appendChild(createTableCell(String(session.duration)));
+        tableRow.appendChild(createTableCell(formatFocus(session.focus)));
+        tableRow.appendChild(createTableCell(String(session.vocabulary)));
+        tableRow.appendChild(createTableCell(session.topic));
+        tableBody.appendChild(tableRow);
+    }
+}
+
+// Erstellt eine Tabellenzelle mit dem angegebenen Text.
+function createTableCell(text) {
+    const tableCell = document.createElement("td");
+    tableCell.textContent = text;
+    return tableCell;
+}
+
+// Wandelt den gespeicherten Datumswert in das deutsche Anzeigeformat um.
+function formatDate(date) {
+    const dateParts = date.split("-");
+
+    if (dateParts.length === 3) {
+        return dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
+    }
+
+    return date;
+}
+
+// Wandelt gespeicherte Fokuswerte in lesbare Beschriftungen um.
+function formatFocus(focus) {
+    if (focus === "grammatik") {
+        return "Grammatik";
+    }
+    if (focus === "konversation") {
+        return "Konversation";
+    }
+    if (focus === "hoeren-verstehen") {
+        return "Hören & Verstehen";
+    }
+    return "Vokabeln";
+}
+
 // Speichert eine gültige Lernsession aus dem Formular.
 function saveSession(event) {
     event.preventDefault();
@@ -55,9 +105,11 @@ function saveSession(event) {
     learningSessions.push(session);
     saveSessions();
     document.querySelector("#learning-form").reset();
+    renderSessions();
 }
 
 loadSessions();
+renderSessions();
 
 // Verknüpft das Formular mit der Speicherfunktion.
 const learningForm = document.querySelector("#learning-form");
